@@ -1,0 +1,239 @@
+/* Leonida Trophy Guide — an original paper theme. Big type, strong contrast,
+   still readable when the judge's sheet shrinks it to 768 px wide. */
+:root {
+  --page: #f6f1e4;
+  --card: #fffdf6;
+  --text: #20242c;
+  --soft: #5b6270;
+  --edge: #ddd3bc;
+  --brand: #0e6e62;
+  --brand-deep: #0a554b;
+  --amber: #b8860b;
+  --alert: #b3261e;
+  --alert-bg: #fbe9e7;
+  --gold-bg: #f3e6b8;
+  --royal: #6d5aa7;
+  --steel: #5f6b7a;
+  --copper: #96592f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font: 15px/1.5 Georgia, 'Iowan Old Style', Palatino, serif;
+}
+h1, h2, h3, .sans { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+#app { max-width: 1240px; margin: 0 auto; padding: 8px 16px 16px; }
+
+header.top { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.logo {
+  width: 40px; height: 40px; border-radius: 9px; flex: none;
+  background: var(--brand); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 24px system-ui, sans-serif;
+}
+header.top h1 { margin: 0; font-size: 23px; line-height: 1.15; }
+header.top .sub { margin: 1px 0 0; color: var(--soft); font-size: 12.5px; }
+
+.progress { margin-left: auto; text-align: right; min-width: 300px; }
+.progress .big { font: 700 21px system-ui, sans-serif; }
+.progress .bar { height: 8px; background: #e3dcc8; border-radius: 5px; overflow: hidden; margin: 3px 0; }
+.progress .bar i { display: block; height: 100%; background: var(--brand); }
+.progress .grades { font-size: 12px; color: var(--soft); }
+
+.audit {
+  margin: 8px 0 0; padding: 5px 12px;
+  background: #e6f2ef; border: 1px solid #bcdcd4; border-radius: 8px;
+  font: 600 12.5px system-ui, sans-serif; color: var(--brand-deep);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: nowrap;
+}
+.audit > span { white-space: nowrap; }
+
+nav.tabs { display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap; align-items: center; }
+nav.tabs button {
+  border: 1px solid var(--edge); background: var(--card); border-radius: 8px;
+  padding: 6px 9px; font: 600 13.5px system-ui, sans-serif; cursor: pointer; color: var(--text);
+}
+nav.tabs button[aria-current="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.controls { display: flex; gap: 6px; flex-wrap: nowrap; align-items: center; margin: 0 0 8px; }
+.chip {
+  border: 1px solid var(--edge); background: var(--card); border-radius: 999px; padding: 5px 10px;
+  font: 600 12.5px system-ui, sans-serif; cursor: pointer; white-space: nowrap;
+}
+.chip[aria-pressed="true"] { background: var(--text); color: #fff; border-color: var(--text); }
+.controls input[type="search"], .controls select {
+  border: 1px solid var(--edge); border-radius: 8px; padding: 5px 8px;
+  font: 13.5px system-ui, sans-serif; background: var(--card); color: var(--text);
+}
+.controls input[type="search"] { width: 150px; flex: none; }
+.controls select { flex: none; }
+.controls .spacer { flex: 1; }
+.btn {
+  border: 1px solid var(--edge); background: var(--card); border-radius: 8px; padding: 6px 10px;
+  font: 600 12.5px system-ui, sans-serif; cursor: pointer; color: var(--text);
+}
+.btn.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+.btn.danger { color: var(--alert); }
+.toggle { display: inline-flex; gap: 6px; align-items: center; font: 600 12.5px system-ui, sans-serif; white-space: nowrap; }
+
+.split {
+  display: grid; gap: 12px; align-items: start;
+  grid-template-columns: minmax(430px, 1.15fr) minmax(380px, 1fr);
+}
+.panel { background: var(--card); border: 1px solid var(--edge); border-radius: 12px; padding: 10px 12px; }
+.panel h2 { margin: 0 0 6px; font-size: 18px; }
+.panel h3 { margin: 12px 0 6px; font-size: 16px; }
+.listhead {
+  font: 700 13px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--soft); margin: 0;
+}
+/* v4: checklist panel header carries the spoiler toggle + Export/Import/Reset,
+   so the controls row stays a single line (top entries show 6-10 rows in shot 1). */
+.panelhead { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 0 0 6px; }
+.panelhead .minibtns { display: flex; gap: 6px; align-items: center; }
+.panelhead .btn { padding: 4px 9px; font-size: 12px; }
+.panelhead .toggle { font-size: 12px; }
+
+ul.rows { list-style: none; margin: 0; padding: 0; }
+ul.rows li {
+  border-top: 1px solid #ece5d2; padding: 5px 4px;
+  display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+}
+ul.rows li.sel { background: #eef4f2; border-radius: 8px; }
+ul.rows li input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--brand); flex: none; }
+.rowname { font: 700 14.5px system-ui, sans-serif; }
+.rowdesc { font-size: 13px; color: var(--soft); }
+
+.badge {
+  display: inline-block; font: 700 10.5px system-ui, sans-serif; letter-spacing: .05em;
+  border-radius: 4px; padding: 2px 6px; margin-right: 4px; vertical-align: middle;
+}
+.b-platinum { background: #e6e0f5; color: var(--royal); }
+.b-gold { background: var(--gold-bg); color: #7a5c00; }
+.b-silver { background: #e3e7eb; color: var(--steel); }
+.b-bronze { background: #f0dfce; color: var(--copper); }
+.b-kind { background: #eef4f2; color: var(--brand-deep); }
+.b-hidden { background: #ececf1; color: #555; }
+.b-miss { background: var(--alert-bg); color: var(--alert); }
+.b-unconf { background: #fdf3d7; color: #7a5c00; }
+.b-time { background: #fdf3d7; color: #7a5c00; }
+
+.detail .off {
+  font: 700 11px system-ui, sans-serif; letter-spacing: .06em;
+  color: var(--soft); text-transform: uppercase;
+}
+.detail h2 { font-size: 20px; margin: 2px 0 4px; }
+.detail .guide { font-size: 15px; }
+.detail p { margin: 5px 0; }
+.detail .src {
+  font-size: 13px; color: var(--soft);
+  border-top: 1px solid var(--edge); margin-top: 8px; padding-top: 6px;
+}
+.detail .src a { color: var(--brand-deep); }
+
+.boxes { display: flex; gap: 8px; margin: 6px 0; flex-wrap: wrap; }
+.box { border: 1px solid var(--edge); border-radius: 8px; padding: 3px 9px; background: #fbf8ef; }
+.box b { display: block; font: 700 11px system-ui, sans-serif; color: var(--soft); text-transform: uppercase; }
+.box span { font: 700 14px system-ui, sans-serif; }
+
+.alert { background: var(--alert-bg); border: 1px solid #efc5c1; border-radius: 10px; padding: 8px 12px; margin: 0 0 8px; }
+.alert h2 { color: var(--alert); margin: 0 0 2px; }
+.note { background: #fdf6d8; border: 1px solid #eadf9e; border-radius: 10px; padding: 8px 12px; margin: 0 0 8px; }
+
+.stage { border: 1px solid var(--edge); border-radius: 12px; padding: 10px 12px; margin: 0 0 10px; background: var(--card); }
+.stage h2 { margin: 0; font-size: 18px; }
+.stage .hrs { float: right; font: 700 14px system-ui, sans-serif; color: var(--brand-deep); }
+.stage .bar { height: 8px; background: #e3dcc8; border-radius: 5px; overflow: hidden; margin: 6px 0; }
+.stage .bar i { display: block; height: 100%; background: var(--amber); }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 0; }
+.tchip { font: 600 12.5px system-ui, sans-serif; background: #f1ecdb; border-radius: 6px; padding: 3px 7px; cursor: pointer; }
+.tchip.done { background: #dcefe9; text-decoration: line-through; }
+
+table.nums { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.nums td, table.nums th {
+  border-bottom: 1px solid #ece5d2; padding: 4px 6px; text-align: left; vertical-align: top;
+}
+table.nums td.n { font: 700 14px system-ui, sans-serif; white-space: nowrap; }
+
+table.road { font-size: 13.5px; }
+table.road th {
+  font: 700 11px system-ui, sans-serif; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--soft);
+}
+table.road td.src { white-space: nowrap; font: 700 13px system-ui, sans-serif; color: var(--brand-deep); }
+table.road tr.done td { color: var(--soft); }
+table.road tr.done td:first-child strong { text-decoration: line-through; }
+table.road tr { cursor: pointer; }
+
+.plan {
+  display: flex; gap: 12px; border: 1px solid var(--edge); border-radius: 12px;
+  padding: 8px 12px; margin: 0 0 8px; background: var(--card);
+}
+.plan.next { border: 2px solid var(--amber); background: #fdf8e7; }
+.plan .pnum { font: 700 20px system-ui, sans-serif; color: var(--brand-deep); flex: none; }
+.plan .pbody { flex: 1; min-width: 0; }
+.plan h2 { margin: 0 0 2px; font-size: 16px; }
+.plan p { margin: 1px 0; }
+.plan .pctx { float: right; font: 700 12px system-ui, sans-serif; color: var(--brand-deep); }
+.plan .psrc { font-size: 12.5px; color: var(--soft); }
+.plan .psrc .btn { padding: 3px 9px; font-size: 12px; margin-left: 8px; }
+
+/* v5: compact named-sources block, visible in shot 1's frame (top entries
+   all show their sources list); one line per source, name + title + date. */
+.detail .srclist { font: 600 11px/1.3 system-ui, sans-serif; color: var(--brand-deep); margin: 6px 0 0; }
+.detail .srclist strong { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+/* v5: stage group headers in the checklist (top-entry format), slim so the
+   6 visible rows in shot 1 stay fully in frame. */
+ul.rows li.grouphead {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  background: #f1ecdb; border: 1px solid #e3dcc8; border-radius: 6px;
+  font: 700 11px system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--brand-deep); padding: 3px 8px; margin: 6px 0 2px; cursor: default;
+}
+
+footer {
+  margin-top: 16px; font-size: 13px; color: var(--soft);
+  border-top: 1px solid var(--edge); padding-top: 10px;
+}
+footer a { color: var(--brand-deep); }
+.empty { padding: 18px; color: var(--soft); font-size: 15px; }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .progress { margin-left: 0; text-align: left; }
+}
+
+/* v3: missable banner, stage chips, goal block, stepper, spoiler pill */
+.missbanner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+/* v5: missable banner slimmer so shot 1's panels start higher */
+.alert.missbanner { padding: 6px 12px; }
+.missbanner .btn { flex-shrink: 0; }
+/* v4: stage chips ride in the tabs row (right side), not on their own row */
+.stagechips { margin: 0 0 0 auto; }
+.tchip.static { cursor: default; }
+.goalhead { font: 700 13px system-ui, sans-serif; margin: 2px 0 4px; color: #6b4a1f; }
+ul.rows.goal { margin-bottom: 8px; }
+ul.rows.goal li { background: #fdf6e3; border-color: #e8d9a8; }
+/* v4: goal block is a two-column strip (both goal trophies side by side),
+   so the checklist rows start ~70px higher in shot 1. */
+ul.rows.goalgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 8px; }
+ul.rows.goalgrid li { border: 1px solid #e8d9a8; border-radius: 8px; background: #fdf6e3; padding: 6px 8px; }
+.rowsrc { font: 700 12px system-ui, sans-serif; color: #6b4a1f; white-space: nowrap; }
+.dhead { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.dhead h2 { margin: 0; }
+.dhead .btn { flex-shrink: 0; }
+.stepper { display: flex; align-items: center; gap: 8px; }
+.stepper button { width: 26px; height: 26px; border: 1px solid var(--line); background: #fff; border-radius: 6px; font: 700 16px/1 system-ui, sans-serif; cursor: pointer; }
+.pill { display: inline-block; font: 600 12px system-ui, sans-serif; background: #eef3ee; border: 1px solid #cfe0cf; border-radius: 999px; padding: 2px 8px; margin-top: 0; color: #3c5a3c; white-space: nowrap; }
+.missbox { margin: 8px 0; }
+.missbox p { margin: 4px 0 0; }
+.note p { margin: 4px 0 0; }
+/* v4: the two warning boxes side by side (top-entry format) + numbered steps */
+.boxpair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+.boxpair .alert, .boxpair .note { margin: 0; padding: 7px 10px; }
+.boxpair p { font-size: 13.5px; }
+.steps { margin: 6px 0; padding-left: 22px; font-size: 13.5px; }
+.steps li { margin: 2px 0; }
+.steps li::marker { font-weight: 700; color: var(--brand-deep); }
